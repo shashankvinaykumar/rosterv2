@@ -202,22 +202,23 @@ function App() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-slate-200/50 mt-24 py-12">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <footer className="border-t border-slate-200/50 mt-12 sm:mt-16 lg:mt-24 py-8 sm:py-10 lg:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-center md:text-left">
-              <p className="text-slate-500 text-sm font-light">Tracking {stats.total} APMs since 2002</p>
+              <p className="text-slate-500 text-xs sm:text-sm font-light">Tracking {stats.total} APMs since 2002</p>
             </div>
             <a
               href="mailto:shvinaykumar@google.com?subject=Feedback%20for%20APM%20Roster"
-              className="group flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-2xl hover:bg-slate-800 transition-all duration-200 shadow-sm hover:shadow-lg font-light text-sm tracking-wide"
+              className="group flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-slate-900 text-white rounded-xl sm:rounded-2xl hover:bg-slate-800 transition-all duration-200 shadow-sm hover:shadow-lg font-light text-xs sm:text-sm tracking-wide"
             >
-              <Mail className="w-4 h-4" />
-              <span>Share Feedback</span>
+              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Share Feedback</span>
+              <span className="sm:hidden">Feedback</span>
             </a>
           </div>
-          <div className="mt-6 text-center">
-            <p className="text-slate-400 text-xs font-light">Made with ❤️ by Shashank Vinay Kumar, APM Class of 2025</p>
+          <div className="mt-4 sm:mt-6 text-center">
+            <p className="text-slate-400 text-[10px] sm:text-xs font-light">Made with ❤️ by Shashank Vinay Kumar, APM Class of 2025</p>
           </div>
         </div>
       </footer>
@@ -254,40 +255,41 @@ function PersonCard({ person, onSelect }) {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <button onClick={onSelect} className="text-left bg-white/80 backdrop-blur-sm rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:bg-white transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-slate-300/50">
+    <button onClick={onSelect} className="text-left bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:bg-white transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-slate-300/50">
       {/* Card Header with Photo */}
-      <div className="relative h-40 bg-gradient-to-br from-slate-100 to-slate-200/50">
-        <div className="absolute -bottom-14 left-6">
+      <div className="relative h-32 sm:h-36 lg:h-40 bg-gradient-to-br from-slate-100 to-slate-200/50">
+        <div className="absolute -bottom-12 sm:-bottom-14 left-4 sm:left-6">
           {linkedinDetails.photo && !imageError ? (
             <img
               src={linkedinDetails.photo}
               alt={person.name}
-              className="w-28 h-28 rounded-full border-4 border-white shadow-xl object-cover"
+              className="w-24 h-24 sm:w-26 sm:h-26 lg:w-28 lg:h-28 rounded-full border-3 sm:border-4 border-white shadow-xl object-cover"
               onError={() => setImageError(true)}
               crossOrigin="anonymous"
               referrerPolicy="no-referrer"
             />
           ) : (
-            <div className="w-28 h-28 rounded-full border-4 border-white shadow-xl bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
-              <Users className="w-12 h-12 text-white" />
+            <div className="w-24 h-24 sm:w-26 sm:h-26 lg:w-28 lg:h-28 rounded-full border-3 sm:border-4 border-white shadow-xl bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
+              <Users className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 text-white" />
             </div>
           )}
         </div>
         {/* Status Badge */}
-        <div className="absolute top-5 right-5">
-          <span className={`px-3.5 py-1.5 rounded-full text-xs font-light tracking-wide border ${statusInfo.color} flex items-center gap-1.5 backdrop-blur-md shadow-sm`}>
+        <div className="absolute top-3 sm:top-4 lg:top-5 right-3 sm:right-4 lg:right-5">
+          <span className={`px-2.5 sm:px-3 lg:px-3.5 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-light tracking-wide border ${statusInfo.color} flex items-center gap-1 sm:gap-1.5 backdrop-blur-md shadow-sm`}>
             <span>{statusInfo.icon}</span>
-            {statusInfo.label}
+            <span className="hidden sm:inline">{statusInfo.label}</span>
+            <span className="sm:hidden">{statusInfo.label.split(' ')[0]}</span>
           </span>
         </div>
       </div>
 
       {/* Card Body */}
-      <div className="pt-16 px-6 pb-6">
+      <div className="pt-12 sm:pt-14 lg:pt-16 px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6">
         {/* Name and Headline */}
-        <div className="mb-5">
-          <h3 className="text-xl font-light text-slate-900 mb-2 tracking-tight">{person.name}</h3>
-          <p className="text-sm text-slate-500 font-light line-clamp-2 min-h-[2.5rem] leading-relaxed">
+        <div className="mb-4 sm:mb-5">
+          <h3 className="text-lg sm:text-xl font-light text-slate-900 mb-1.5 sm:mb-2 tracking-tight line-clamp-1">{person.name}</h3>
+          <p className="text-xs sm:text-sm text-slate-500 font-light line-clamp-2 min-h-[2rem] sm:min-h-[2.5rem] leading-relaxed">
             {linkedinDetails.headline || person.currentRole || 'Product Manager'}
           </p>
         </div>
@@ -329,15 +331,16 @@ function PersonCard({ person, onSelect }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-2.5 pt-5 border-t border-slate-100/80">
+        <div className="flex gap-2 sm:gap-2.5 pt-4 sm:pt-5 border-t border-slate-100/80">
           {person.email && (
             <a
               href={`mailto:${person.email}`}
-              className="flex-1 px-4 py-2.5 bg-slate-50 text-slate-700 rounded-xl hover:bg-slate-100 transition-all duration-200 font-light text-sm flex items-center justify-center gap-2 group shadow-sm hover:shadow"
+              className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-slate-50 text-slate-700 rounded-lg sm:rounded-xl hover:bg-slate-100 transition-all duration-200 font-light text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 group shadow-sm hover:shadow"
               onClick={(e) => e.stopPropagation()}
             >
-              <Mail className="w-4 h-4" />
-              Email
+              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Email</span>
+              <span className="sm:hidden">Mail</span>
             </a>
           )}
           {person.linkedIn && (
@@ -345,11 +348,12 @@ function PersonCard({ person, onSelect }) {
               href={person.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2.5 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all duration-200 font-light text-sm flex items-center justify-center gap-2 group shadow-sm hover:shadow-lg"
+              className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-slate-900 text-white rounded-lg sm:rounded-xl hover:bg-slate-800 transition-all duration-200 font-light text-xs sm:text-sm flex items-center justify-center gap-1.5 sm:gap-2 group shadow-sm hover:shadow-lg"
               onClick={(e) => e.stopPropagation()}
             >
-              LinkedIn
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span className="hidden sm:inline">LinkedIn</span>
+              <span className="sm:hidden">In</span>
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           )}
         </div>
@@ -402,123 +406,125 @@ function PersonModal({ person, onClose }) {
   const statusInfo = STATUS_MAP[status] || STATUS_MAP[1]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
+      <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative w-full max-w-4xl bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-200/60 overflow-hidden">
+      <div className="relative w-full max-w-4xl bg-white/95 backdrop-blur-xl rounded-none sm:rounded-3xl shadow-2xl border-0 sm:border border-slate-200/60 overflow-hidden min-h-screen sm:min-h-0 my-0 sm:my-auto">
         {/* Header */}
-        <div className="px-10 py-8 border-b border-slate-200/50 bg-gradient-to-br from-slate-50 to-white">
-          <div className="flex items-start justify-between">
-            <div className="flex-1">
-              <div className="flex items-center gap-5 mb-4">
+        <div className="px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8 border-b border-slate-200/50 bg-gradient-to-br from-slate-50 to-white sticky top-0 z-10">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-3 sm:gap-4 lg:gap-5 mb-3 sm:mb-4">
                 {linkedinDetails.photo && !imageError ? (
                   <img
                     src={linkedinDetails.photo}
                     alt={person.name}
-                    className="w-20 h-20 rounded-full border-4 border-white shadow-xl object-cover"
+                    className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full border-3 sm:border-4 border-white shadow-xl object-cover flex-shrink-0"
                     onError={() => setImageError(true)}
                     crossOrigin="anonymous"
                     referrerPolicy="no-referrer"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-full border-4 border-white shadow-xl bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center">
-                    <Users className="w-10 h-10 text-white" />
+                  <div className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-full border-3 sm:border-4 border-white shadow-xl bg-gradient-to-br from-slate-300 to-slate-400 flex items-center justify-center flex-shrink-0">
+                    <Users className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 text-white" />
                   </div>
                 )}
-                <div>
-                  <h2 className="text-3xl font-light text-slate-900 tracking-tight mb-1">{person.name}</h2>
-                  <p className="text-slate-500 text-base font-light">{linkedinDetails.headline || person.currentRole || 'Product Manager'}</p>
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-light text-slate-900 tracking-tight mb-1 truncate">{person.name}</h2>
+                  <p className="text-sm sm:text-base text-slate-500 font-light line-clamp-2">{linkedinDetails.headline || person.currentRole || 'Product Manager'}</p>
                 </div>
               </div>
               
               {/* Contact Info */}
-              <div className="flex flex-wrap items-center gap-4 text-sm">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 lg:gap-4 text-xs sm:text-sm">
                 {person.email && (
-                  <div className="flex items-center gap-2 text-slate-600 font-light">
-                    <Mail className="w-4 h-4 text-slate-400" />
-                    <span>{person.email}</span>
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-slate-600 font-light truncate max-w-full">
+                    <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400 flex-shrink-0" />
+                    <span className="truncate">{person.email}</span>
                   </div>
                 )}
                 {person.classYear && (
-                  <div className="flex items-center gap-2 text-slate-600 font-light">
-                    <Calendar className="w-4 h-4 text-slate-400" />
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-slate-600 font-light">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400 flex-shrink-0" />
                     <span>Class of {person.classYear}</span>
                   </div>
                 )}
                 <div className="flex items-center gap-2">
-                  <span className={`px-3.5 py-1.5 rounded-full text-xs font-light tracking-wide border ${statusInfo.color} flex items-center gap-1.5 shadow-sm`}>
+                  <span className={`px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-xs font-light tracking-wide border ${statusInfo.color} flex items-center gap-1.5 shadow-sm`}>
                     <span>{statusInfo.icon}</span>
-                    {statusInfo.label}
+                    <span className="hidden sm:inline">{statusInfo.label}</span>
+                    <span className="sm:hidden">{statusInfo.label.split(' ')[0]}</span>
                   </span>
                 </div>
               </div>
             </div>
             
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               {person.linkedIn && (
                 <a
                   href={person.linkedIn}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 bg-slate-900 text-white rounded-xl hover:bg-slate-800 transition-all duration-200 font-light text-sm flex items-center gap-2 shadow-sm hover:shadow-lg"
+                  className="px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 bg-slate-900 text-white rounded-lg sm:rounded-xl hover:bg-slate-800 transition-all duration-200 font-light text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-lg"
                 >
-                  LinkedIn
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span className="hidden sm:inline">LinkedIn</span>
+                  <span className="sm:hidden">In</span>
+                  <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4" />
                 </a>
               )}
               <button 
                 onClick={onClose} 
-                className="p-2.5 rounded-xl hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300/50 transition-all duration-200"
+                className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-300/50 transition-all duration-200 flex-shrink-0"
               >
-                <X className="w-5 h-5 text-slate-600" />
+                <X className="w-4 h-4 sm:w-5 sm:h-5 text-slate-600" />
               </button>
             </div>
           </div>
         </div>
 
         {/* Body */}
-        <div className="max-h-[75vh] overflow-y-auto">
-          <div className="px-10 py-8 space-y-10">
+        <div className="overflow-y-auto">
+          <div className="px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8 space-y-6 sm:space-y-8 lg:space-y-10">
             {/* Work History */}
             <section>
-              <h3 className="text-2xl font-light text-slate-900 mb-6 flex items-center gap-3 tracking-tight">
-                <Briefcase className="w-5 h-5 text-slate-400" />
+              <h3 className="text-xl sm:text-2xl font-light text-slate-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 tracking-tight">
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                 Work History
               </h3>
               {experience.length === 0 ? (
-                <div className="text-center py-16">
-                  <Briefcase className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                  <p className="text-slate-500 text-lg font-light">No work history available</p>
+                <div className="text-center py-12 sm:py-16">
+                  <Briefcase className="w-12 h-12 sm:w-16 sm:h-16 text-slate-300 mx-auto mb-4" />
+                  <p className="text-slate-500 text-base sm:text-lg font-light">No work history available</p>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {experience.map((exp, idx) => (
-                    <div key={idx} className="group p-6 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-2xl shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-200">
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3">
-                          <div className="flex-1">
-                            <h4 className="font-light text-slate-900 text-xl mb-2 tracking-tight">
+                    <div key={idx} className="group p-4 sm:p-5 lg:p-6 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-200">
+                      <div className="flex flex-col gap-3 sm:gap-4">
+                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-2 sm:gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-light text-slate-900 text-lg sm:text-xl mb-1 sm:mb-2 tracking-tight">
                               {exp.position || 'Role'}
                             </h4>
                             {exp.companyName && (
-                              <p className="text-slate-700 font-light text-lg mb-2">{exp.companyName}</p>
+                              <p className="text-slate-700 font-light text-base sm:text-lg mb-1 sm:mb-2">{exp.companyName}</p>
                             )}
                             {exp.location && (
-                              <p className="text-slate-500 text-sm flex items-center gap-2 font-light">
-                                <MapPin className="w-4 h-4 text-slate-400" />
-                                {exp.location}
+                              <p className="text-slate-500 text-xs sm:text-sm flex items-center gap-1.5 sm:gap-2 font-light">
+                                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400 flex-shrink-0" />
+                                <span className="truncate">{exp.location}</span>
                               </p>
                             )}
                           </div>
-                          <div className="text-sm text-slate-600 flex-shrink-0 bg-slate-50 px-4 py-2 rounded-full font-light border border-slate-200/60">
+                          <div className="text-xs sm:text-sm text-slate-600 flex-shrink-0 bg-slate-50 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-light border border-slate-200/60">
                             {exp.startDate?.text || (exp.startDate?.month && exp.startDate?.year ? `${exp.startDate.month} ${exp.startDate.year}` : '')}
                             {exp.endDate?.text ? ` — ${exp.endDate.text}` : ''}
                             {!exp.endDate && !exp.endDate?.text && exp.duration ? ` • ${exp.duration}` : ''}
                           </div>
                         </div>
                         {exp.description && (
-                          <div className="mt-4 pt-4 border-t border-slate-100/80">
-                            <p className="text-slate-600 leading-relaxed whitespace-pre-line font-light">
+                          <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-100/80">
+                            <p className="text-slate-600 leading-relaxed whitespace-pre-line font-light text-sm sm:text-base">
                               {exp.description}
                             </p>
                           </div>
@@ -533,21 +539,21 @@ function PersonModal({ person, onClose }) {
             {/* Education */}
             {allEducation.length > 0 && (
               <section>
-                <h3 className="text-2xl font-light text-slate-900 mb-6 flex items-center gap-3 tracking-tight">
-                  <TrendingUp className="w-5 h-5 text-slate-400" />
+                <h3 className="text-xl sm:text-2xl font-light text-slate-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 tracking-tight">
+                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                   Education
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {allEducation.map((edu, idx) => (
-                    <div key={idx} className="p-5 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-2xl hover:bg-white/80 hover:shadow-sm transition-all duration-200">
-                      <div className="flex flex-col gap-3">
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-                          <div className="flex-1">
-                            <h4 className="font-light text-slate-900 text-lg tracking-tight">
+                    <div key={idx} className="p-4 sm:p-5 bg-white/60 backdrop-blur-sm border border-slate-200/60 rounded-xl sm:rounded-2xl hover:bg-white/80 hover:shadow-sm transition-all duration-200">
+                      <div className="flex flex-col gap-2 sm:gap-3">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-light text-slate-900 text-base sm:text-lg tracking-tight">
                               {edu.schoolName}
                             </h4>
                             {(edu.degree || edu.fieldOfStudy) && (
-                              <p className="text-slate-600 font-light text-base mt-1">
+                              <p className="text-slate-600 font-light text-sm sm:text-base mt-1">
                                 {edu.degree && edu.fieldOfStudy 
                                   ? `${edu.degree} in ${edu.fieldOfStudy}`
                                   : edu.degree || edu.fieldOfStudy
@@ -556,7 +562,7 @@ function PersonModal({ person, onClose }) {
                             )}
                           </div>
                           {(edu.startDate || edu.endDate || edu.period) && (
-                            <div className="text-sm text-slate-500 flex-shrink-0 bg-slate-50 px-3 py-2 rounded-full border border-slate-200/60 font-light">
+                            <div className="text-xs sm:text-sm text-slate-500 flex-shrink-0 bg-slate-50 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full border border-slate-200/60 font-light">
                               {edu.period || 
                                (edu.startDate?.text && edu.endDate?.text 
                                  ? `${edu.startDate.text} - ${edu.endDate.text}`
