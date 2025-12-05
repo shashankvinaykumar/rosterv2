@@ -94,9 +94,20 @@ function App() {
       <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
           {/* Title Section */}
-          <div className="mb-10">
-            <h1 className="text-5xl font-light tracking-tight text-slate-900 mb-2">APM Roster</h1>
-            <p className="text-lg text-slate-500 font-light">Google's Associate Product Manager Directory</p>
+          <div className="mb-10 relative">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div>
+                <h1 className="text-5xl font-light tracking-tight text-slate-900 mb-2">APM Roster</h1>
+                <p className="text-lg text-slate-500 font-light">Google's Associate Product Manager Directory</p>
+              </div>
+              <div className="text-left md:text-right">
+                <p className="text-xs text-slate-400 font-light leading-relaxed">
+                  Made with ❤️<br />
+                  by shashank vinay kumar<br />
+                  <span className="text-slate-500">APM class of 2025</span>
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Stats Cards */}
@@ -206,7 +217,7 @@ function App() {
             </a>
           </div>
           <div className="mt-6 text-center">
-            <p className="text-slate-400 text-xs font-light">Made with care by Shashank Vinay Kumar</p>
+            <p className="text-slate-400 text-xs font-light">made with ❤️ by shashank vinay kumar, APM class of 2025</p>
           </div>
         </div>
       </footer>
