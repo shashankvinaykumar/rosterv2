@@ -92,42 +92,42 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50/30 to-white">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-8">
           {/* Title Section */}
-          <div className="mb-10 relative">
-            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div className="mb-4 sm:mb-6 lg:mb-10 relative">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 sm:gap-4">
               <div>
-                <h1 className="text-5xl font-light tracking-tight text-slate-900 mb-2">APM Roster</h1>
-                <p className="text-lg text-slate-500 font-light">Google's Associate Product Manager Directory</p>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-slate-900 mb-1 sm:mb-2">APM Roster</h1>
+                <p className="text-sm sm:text-base lg:text-lg text-slate-500 font-light">Google's Associate Product Manager Directory</p>
               </div>
-              <div className="text-left md:text-right">
+              <div className="text-left md:text-right hidden sm:block">
                 <p className="text-xs text-slate-400 font-light leading-relaxed">
                   Made with ❤️<br />
                   by Shashank Vinay Kumar<br />
-                  <span className="text-slate-500">APM class of 2025</span>
+                  <span className="text-slate-500">APM Class of 2025</span>
                 </p>
               </div>
             </div>
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+          <div className="grid grid-cols-3 md:grid-cols-3 gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
             <StatCard label="Total APMs" value={stats.total} color="from-blue-500 to-blue-600" />
             <StatCard label="Still Here" value={stats.stillHere} color="from-emerald-500 to-emerald-600" />
             <StatCard label="Alumni" value={stats.left} color="from-rose-500 to-rose-600" />
           </div>
 
           {/* Search and Filters */}
-          <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex flex-col md:flex-row gap-2 sm:gap-3">
             {/* Search Bar */}
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
               <input
                 type="text"
-                placeholder="Search by name, role, company, location..."
+                placeholder="Search by name, role, company..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 text-slate-900 placeholder:text-slate-400 shadow-sm hover:shadow-md"
+                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 text-sm sm:text-base text-slate-900 placeholder:text-slate-400 shadow-sm hover:shadow-md"
               />
             </div>
 
@@ -135,7 +135,7 @@ function App() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-5 py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 shadow-sm hover:shadow-md min-w-[160px] text-slate-900 cursor-pointer"
+              className="px-3 sm:px-5 py-2.5 sm:py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base text-slate-900 cursor-pointer"
             >
               <option value="all">All Status</option>
               <option value="1">Still Here</option>
@@ -146,7 +146,7 @@ function App() {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="px-5 py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 shadow-sm hover:shadow-md min-w-[140px] text-slate-900 cursor-pointer"
+              className="px-3 sm:px-5 py-2.5 sm:py-3.5 bg-white/80 backdrop-blur-sm border border-slate-200/60 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-slate-300/50 focus:border-slate-300/80 transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base text-slate-900 cursor-pointer"
             >
               <option value="all">All Years</option>
               {classYears.map(year => (
@@ -156,7 +156,7 @@ function App() {
           </div>
 
           {/* Results Count */}
-          <div className="mt-5 text-sm text-slate-500 font-light">
+          <div className="mt-3 sm:mt-5 text-xs sm:text-sm text-slate-500 font-light">
             Showing <span className="font-medium text-slate-700">{displayedData.length}</span> of{' '}
             <span className="font-medium text-slate-700">{filteredData.length}</span> results
           </div>
@@ -164,7 +164,7 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-12">
         {filteredData.length === 0 ? (
           <div className="text-center py-24">
             <div className="w-24 h-24 bg-slate-100/50 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -175,7 +175,7 @@ function App() {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {displayedData.map((person, index) => (
                 <PersonCard key={index} person={person} onSelect={() => setSelectedPerson(person)} />
               ))}
@@ -217,7 +217,7 @@ function App() {
             </a>
           </div>
           <div className="mt-6 text-center">
-            <p className="text-slate-400 text-xs font-light">Made with ❤️ by Shashank Vinay Kumar, APM class of 2025</p>
+            <p className="text-slate-400 text-xs font-light">Made with ❤️ by Shashank Vinay Kumar, APM Class of 2025</p>
           </div>
         </div>
       </footer>
@@ -228,14 +228,14 @@ function App() {
 // Stat Card Component
 function StatCard({ label, value, color }) {
   return (
-    <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-5 border border-slate-200/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-200">
+    <div className="bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border border-slate-200/60 shadow-sm hover:shadow-md hover:bg-white/80 transition-all duration-200">
       <div className="flex items-center justify-between">
-        <div>
-          <p className="text-slate-500 text-xs font-light tracking-wide uppercase mb-1.5">{label}</p>
-          <p className="text-3xl font-light text-slate-900 tracking-tight">{value}</p>
+        <div className="flex-1 min-w-0">
+          <p className="text-slate-500 text-[10px] sm:text-xs font-light tracking-wide uppercase mb-0.5 sm:mb-1.5 truncate">{label}</p>
+          <p className="text-xl sm:text-2xl lg:text-3xl font-light text-slate-900 tracking-tight">{value}</p>
         </div>
-        <div className={`w-12 h-12 bg-gradient-to-br ${color} rounded-xl flex items-center justify-center shadow-sm`}>
-          <TrendingUp className="w-5 h-5 text-white" />
+        <div className={`w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-to-br ${color} rounded-lg sm:rounded-xl flex items-center justify-center shadow-sm flex-shrink-0 ml-2`}>
+          <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
         </div>
       </div>
     </div>
