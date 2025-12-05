@@ -103,7 +103,7 @@ function App() {
               <div className="text-left md:text-right">
                 <p className="text-xs text-slate-400 font-light leading-relaxed">
                   Made with ❤️<br />
-                  by shashank vinay kumar<br />
+                  by Shashank Vinay Kumar<br />
                   <span className="text-slate-500">APM class of 2025</span>
                 </p>
               </div>
@@ -217,7 +217,7 @@ function App() {
             </a>
           </div>
           <div className="mt-6 text-center">
-            <p className="text-slate-400 text-xs font-light">made with ❤️ by shashank vinay kumar, APM class of 2025</p>
+            <p className="text-slate-400 text-xs font-light">Made with ❤️ by Shashank Vinay Kumar, APM class of 2025</p>
           </div>
         </div>
       </footer>
