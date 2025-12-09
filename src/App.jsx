@@ -249,10 +249,23 @@ function PersonCard({ person, onSelect }) {
   const statusInfo = STATUS_MAP[status] || STATUS_MAP[1]
   const linkedinDetails = person.linkedin_details || {}
   const currentPosition = linkedinDetails.currentPosition?.[0]
-  const topEducation = linkedinDetails.profileTopEducation?.[0]
   const experience = linkedinDetails.experience || []
   const mostRecentExp = experience[0]
   const [imageError, setImageError] = useState(false)
+  
+  // Get education from multiple sources (same logic as modal)
+  const topEducation = linkedinDetails.profileTopEducation || []
+  const detailedEducation = linkedinDetails.education || []
+  const allEducation = [...topEducation, ...detailedEducation]
+    .filter(edu => edu && edu.schoolName && edu.schoolName.trim())
+    .reduce((acc, current) => {
+      const existing = acc.find(edu => edu.schoolName === current.schoolName)
+      if (!existing) {
+        acc.push(current)
+      }
+      return acc
+    }, [])
+  const displayEducation = allEducation[0]
 
   return (
     <button onClick={onSelect} className="text-left bg-white rounded-2xl sm:rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-slate-300/50">
@@ -321,11 +334,11 @@ function PersonCard({ person, onSelect }) {
           )}
 
           {/* Education */}
-          {topEducation?.schoolName && (
+          {displayEducation?.schoolName && (
             <InfoRow 
               icon={GraduationCap} 
               label="Education" 
-              value={topEducation.schoolName} 
+              value={displayEducation.schoolName} 
             />
           )}
         </div>
