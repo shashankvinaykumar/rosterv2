@@ -89,7 +89,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-slate-50/30 to-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 lg:py-8">
@@ -255,7 +255,7 @@ function PersonCard({ person, onSelect }) {
   const [imageError, setImageError] = useState(false)
 
   return (
-    <button onClick={onSelect} className="text-left bg-white/80 backdrop-blur-sm rounded-2xl sm:rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-xl hover:bg-white transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-slate-300/50">
+    <button onClick={onSelect} className="text-left bg-white rounded-2xl sm:rounded-3xl border border-slate-200/60 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-slate-300/50">
       {/* Card Header with Photo */}
       <div className="relative h-32 sm:h-36 lg:h-40 bg-gradient-to-br from-slate-100 to-slate-200/50">
         <div className="absolute -bottom-12 sm:-bottom-14 left-4 sm:left-6">
