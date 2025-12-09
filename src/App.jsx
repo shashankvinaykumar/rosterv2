@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Search, Users, Mail, Calendar, MapPin, Briefcase, TrendingUp, ArrowUpRight, X } from 'lucide-react'
+import { Search, Users, Mail, Calendar, MapPin, Briefcase, TrendingUp, ArrowUpRight, X, GraduationCap } from 'lucide-react'
 import rosterData from '../merged_roster.json'
 
 // Status mapping
@@ -323,7 +323,7 @@ function PersonCard({ person, onSelect }) {
           {/* Education */}
           {topEducation?.schoolName && (
             <InfoRow 
-              icon={TrendingUp} 
+              icon={GraduationCap} 
               label="Education" 
               value={topEducation.schoolName} 
             />
@@ -406,10 +406,10 @@ function PersonModal({ person, onClose }) {
   const statusInfo = STATUS_MAP[status] || STATUS_MAP[1]
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto">
-      <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm" onClick={onClose} />
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto" onClick={onClose}>
+      <div className="fixed inset-0 bg-slate-900/20 sm:bg-slate-900/30 backdrop-blur-sm pointer-events-auto" />
 
-      <div className="relative w-full max-w-4xl bg-white/95 backdrop-blur-xl rounded-none sm:rounded-3xl shadow-2xl border-0 sm:border border-slate-200/60 overflow-hidden min-h-screen sm:min-h-0 my-0 sm:my-auto">
+      <div className="relative w-full max-w-4xl bg-white/95 backdrop-blur-xl rounded-none sm:rounded-3xl shadow-2xl border-0 sm:border border-slate-200/60 overflow-hidden min-h-screen sm:min-h-0 my-0 sm:my-auto pointer-events-auto" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="px-4 sm:px-6 lg:px-10 py-4 sm:py-6 lg:py-8 border-b border-slate-200/50 bg-gradient-to-br from-slate-50 to-white sticky top-0 z-10 relative">
           {/* Close Button - Top Right */}
@@ -542,7 +542,7 @@ function PersonModal({ person, onClose }) {
             {allEducation.length > 0 && (
               <section>
                 <h3 className="text-xl sm:text-2xl font-light text-slate-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 tracking-tight">
-                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
+                  <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                   Education
                 </h3>
                 <div className="space-y-2 sm:space-y-3">
